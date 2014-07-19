@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buddy Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/easydropdown.flat.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Scripts --> 
+    <script type="text/javascript" src = "js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src = "js/jquery.easydropdown.min.js "></script>
+    <script type="text/javascript" src = "js/main.js"></script>
+    <script type="text/javascript" src = "js/bootstrap.js"></script> 
+    <!-- Google Maps API --> 
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300' rel='stylesheet' type='text/css'>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+   </head>
+  <body>
+
+<div class='container'>
+  <div class='login-box'>
+    <img id='logo' src="images/buddy-up-logo-square.png" width='150' align='center'></img>
+    <h1>buddy up</h1>
+    <h4>find a study buddy with ease</h4>
+    <div id="userInput">
+      <table border="0" align='center'>
+        <form name="input" method="post" action="/post/user" style="font-size:20px; padding-right:5px">
+        <tr>
+          <td>
+            <input type="text" class="form-control" id="name" placeholder="username">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <select class="dropdown form-control" id="studying">
+              <option value="General">Subject</option>
+              <option value="Accounting">Accounting</option>
+              <option value="Applied Health Science">Applied Heath Science</option>
+              <option value="Biology">Biology</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="Economics">Economics</option>
+              <option value="Math">Math</option>
+              <option value="Physics">Physics</option>
+              <option value="Systems Design Engineering">Systems Design Engineering</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="btn-group" onclick="postUserData();">
+              <button type="button" class="btn btn-default" id="find"> Find a Buddy 
+              </button>
+            </div>
+          </td>
+        </tr>
+        </form>
+      </table>
+      <br />
+    </div>
+  </div>
+</div>
+
+    
+
+  
+  </body>
+</html>

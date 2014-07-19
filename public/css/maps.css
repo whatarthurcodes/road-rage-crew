@@ -1,0 +1,83 @@
+nav {
+		background: url('../images/72H-nav.jpg') no-repeat;
+	background-size: cover;
+	border-bottom: 1px solid #baa899;
+}
+
+.map-page {
+	background-color: rgb(255,255,255);
+}
+
+#map-canvas {
+	float:left;
+    height: 500px;
+	width:65%;
+   	margin: 30px;
+   	border: 1px solid #eee;
+	box-shadow: 2px 2px 1px #ccc;
+	-webkit-box-shadow: 2px 2px 1px #ccc;
+
+}
+
+.navbar-brand {
+	padding: 0px 15px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.map-page-banner{
+	background-color: rgba(186,168,153,0.5);
+	min-height: 50px;
+	margin-bottom: 20px;
+}
+
+#changeSubject{
+	float: right;
+	margin-top: 7px;
+	margin-right: 14px;
+	border-radius: 0px;
+	border: 0px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	background-color: rgba(167,155,168,0.2);
+}
+
+#changeSubject:hover {
+	background-color: rgba(167,155,168,0.6);
+}
+
+#status{
+	text-align: center;
+	vertical-align: :center;
+}
+
+.btn {
+	border: 0px;
+}
+
+.studyList {
+	border-top: 1px solid #baa899;
+	border-radius: 0px;
+	width: 100%;
+}
+
+#menu {
+	height: 500px;
+	overflow: scroll;
+}
+
+footer {
+	margin-top: 10px;
+	height: 200px;
+	bottom: 0;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 10px;
+}
+
+a {
+	color: #baa899;
+}
+
+a:hover {
+	color: #baa899;

@@ -1,0 +1,138 @@
+html, body {
+	width: 100%;
+    height: 100%;
+    margin: 0px;
+	font-family: "Roboto Condensed";
+	font-weight: 200;
+	background-color: rgba(186,168,153,0.5);
+}
+
+h1 {
+	color: #333;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+}
+
+h4{
+	text-align: center;
+	font-weight: 300;
+}
+
+.container  {
+	padding: 50px;
+	margin: 0;
+	background: url('../images/72H1.jpg') no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.login-box {
+	display: block;
+	margin: auto;
+	max-width: 400px;
+	min-width: 400px;
+	padding: 25px;
+	background-color: rgba(186,168,153,0.5);
+
+}
+
+#logo {
+	display: table-cell;
+	text-align: center;
+	margin: auto;
+}
+
+#home-image {
+	background: url("https://github.com/vmathur/mhacks3/blob/master/public/images/icon.png?raw=true");
+	margin-left: auto; 
+	margin-right: auto; 
+	width:88px; 
+	height:80px;
+}
+
+#menuButton {
+	float:right;
+}
+
+#find {
+	width:300px;
+	height:50px;
+	border-radius:0px;
+	border: 0px;
+	display:inline;
+	background-color: rgb(255,255,255);
+	text-transform: uppercase;
+	color: #000;
+}
+
+#find:hover{
+	border: 0px;
+}
+
+#home-image:hover {
+	background: url("https://github.com/vmathur/mhacks3/blob/master/public/images/iconsmile.png?raw=true");
+}
+
+#menu{
+	text-align:left;
+	float:right;
+	width:25%;
+}
+
+#userInput{
+	display: block;
+	text-align: center;
+	text-align: center; 
+}
+
+#findInput{
+	margin-top:-36px;
+}
+
+.form-control {
+	color: #000;
+	letter-spacing: 2px;
+	background-color: rgba(255,255,255,0.4);
+	border: 0px;
+	text-align: center;
+	margin: 10px 0px;
+	height: 50px;
+	text-transform: uppercase;
+	border-radius: 0px;
+}
+
+.buttons {
+	width: 200px;
+	margin:auto;
+	/*text-align: center;*/
+	padding-top: 10px;
+}
+
+.btn-group {
+	border-radius: 0px;
+	border: 0px;
+	margin-top: 40px;
+}
+
+#find:hover{
+	border: 1px solid #61bdf0;
+	background-color: rgba(255,255,255,0.8)
+}
+
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #000;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #000;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #000;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #000;
+}
