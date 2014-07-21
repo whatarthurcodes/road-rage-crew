@@ -1,0 +1,2 @@
+Version,Subject,Recording,Startdate,Startime,Bytes,Reserved,NumRec,Duration,NumSig
+0       ,X X X X                                                                         ,Startdate 21-JUN-2014 X X UTC-04:00_OPITS142                                    ,21.06.14,10.50.50,2048    ,EDF+C                                       ,7,8       ,6

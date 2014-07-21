@@ -1,137 +1,73 @@
-var SERVER = 'budyup.herokuapp.com';
-var map;
+//This data was taken from the txt file and then utilizng notepad, i removed the break lines and added in an extra comma
+var datainput = "0.000000,0.000000,0.000031,0.000031,0.000031,25.282353,0.006867,0.001953,0.000000,,,,,,0.003906,0.000000,,,,,,0.005859,0.000000,,,,,,0.007813,0.000000,,,,,,0.009766,0.000000,,,,,,0.011719,0.000000,,,,,,0.013672,0.000000,,,,,,0.015625,0.000000,,,,,,0.017578,0.000000,,,,,,0.019531,0.000000,,,,,,0.021484,0.000000,,,,,,0.023438,0.000000,,,,,,0.025391,0.000000,,,,,,0.027344,0.000000,,,,,,0.029297,0.000000,,,,,,0.031250,0.000000,,,0.000031,,,0.033203,0.000000,,,,,,0.035156,0.000000,,,,,,0.037109,0.000000,,,,,,0.039063,0.000000,,,,,,0.041016,0.000000,,,,,,0.042969,0.000000,,,,,,0.044922,0.000000,,,,,,0.046875,0.000000,,,,,,0.048828,0.000000,,,,,,0.050781,0.000000,,,,,,0.052734,0.000000,,,,,,0.054688,0.000000,,,,,,0.056641,0.000000,,,,,,0.058594,0.000000,,,,,,0.060547,0.000000,,,,,,0.062500,0.000000,,,0.000031,,,0.064453,0.000000,,,,,,0.066406,0.000000,,,,,,0.068359,0.000000,,,,,,0.070313,0.000000,,,,,,0.072266,0.000000,,,,,,0.074219,0.000000,,,,,,0.076172,0.000000,,,,,,0.078125,0.000000,,,,,,0.080078,0.000000,,,,,,0.082031,0.000000,,,,,,0.083984,0.000000,,,,,,0.085938,0.000000,,,,,,0.087891,0.000000,,,,,,0.089844,0.000000,,,,,,0.091797,0.000000,,,,,,0.093750,0.000000,,,0.000031,,,0.095703,0.000000,,,,,,0.097656,0.000000,,,,,,0.099609,0.000000,,,,,,0.101563,0.000000,,,,,,0.103516,0.000000,,,,,,0.105469,0.000000,,,,,,0.107422,0.000000,,,,,,0.109375,0.000000,,,,,,0.111328,0.000000,,,,,,0.113281,0.000000,,,,,,0.115234,0.000000,,,,,,0.117188,0.000000,,,,,,0.119141,0.000000,,,,,,0.121094,0.000000,,,,,,0.123047,0.000000,,,,,,0.125000,0.000000,0.000031,0.000031,0.000031,25.282353,-6.102846,0.126953,0.000000,,,,,,0.128906,0.000000,,,,,,0.130859,0.000000,,,,,,0.132813,0.000000,,,,,,0.134766,0.000000,,,,,,0.136719,0.000000,,,,,,0.138672,0.000000,,,,,,0.140625,0.000000,,,,,,0.142578,0.000000,,,,,,0.144531,0.000000,,,,,,0.146484,0.000000,,,,,,0.148438,0.000000,,,,,,0.150391,0.000000,,,,,,0.152344,0.000000,,,,,,0.154297,0.000000,,,,,,0.156250,0.000000,,,0.000031,,"
 
-$( document ).ready(function() {
 
-function initialize() {
-  var mapOptions = {
-    zoom: 8,
-    center: new google.maps.LatLng(43.7000, -79.4000)
-    /*center: new google.maps.LatLng(myLat, myLong)*/
-  };
+$(document).ready(function(){
+  $("#calm").click(function(){
+   alert("You are calm");
+  });
+  $("#angry").click(function(){
+   var a = state(datainput);
+   var b = time(a);
+
+   alert(detection(b));
+
+  });
+});
+
+
+//takes the raw data and converts in in to an array
+function state(data){
+var alldata = [];
+var value = "";
+for (i=0; i<=data.length-1;i++){
   
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-  getUserData(function(res){
-        console.log(res[res.length-1].studying);
-        getUserStudying(res[res.length-1].studying, function(data){
-          console.log(data);
-          for (var i = 0; i<data.length;i++){
-            var longu = parseInt(data[i].location.long);// + 0.1*Math.random() -0.1;
-            var lati = parseInt(data[i].location.lat);// + 0.1*Math.random()*0.1 + 0.33;
-            var studentname = data[i].username;
-            var isStudying = data[i].studying;
-            console.log(lati+'  '+longu);
-            createMarker(lati,longu, studentname);
-            addToList(studentname, isStudying);
-          }
-    });
-  });
-  getLocation();
- }
-
-google.maps.event.addDomListener(window, 'load', initialize);
-});
-
-$(function() {
-  $("#home-image").click(function(){
-  });
-});
- 
-// function replaceSubject(subject){
-//   var subject = subject;
-//   $("#studying").update(subject);
-// }
-
-function getUserStudying(studying, callback){
-  $.get("http://"+SERVER+"/data/get/getUserWith/"+studying,function(data,status){
-    callback(data);
-  });
-}
-
-function addToList(studentname, isStudying) {
-  var studentname = studentname;
-  var isStudying = isStudying;
-  var menu = $("#menu");
-  menu.append("<div class='btn btn-default studyList'></div>")
-  $('.studyList:last').append(studentname + ' is currently studying ' + isStudying)
-}
-
-function getUserData(callback){
-  $.get("http://"+SERVER+"/data/get/getUser",function(data,status){
-    callback(data);
-  });
-}
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    alert("Geolocation is not supported by this browser.");
+  if(data[i]!== ","){
+    value+=data[i].toString();
   }
+
+  else {
+    alldata.push(value);
+    value = "";
+  }
+
+
 }
 
-function showPosition(position) {
-  var myLat = position.coords.latitude;
-  var myLong = position.coords.longitude; 
-  console.log('i am here '+myLat +' '+myLong)
-  createMarker(myLat, myLong, "You are here");
+return alldata;
 }
 
-function createMarker (lat, lng, Message) {
-  var latlng = new google.maps.LatLng(lat, lng);
-  var marker = new google.maps.Marker({
-    position: latlng,
-    map: map, 
-    title: Message
-  })
+//takes the array data form and then extracts one specific section (i.e. time values only)
+function time (data){
+  var time = [];
+  var counter = 0
+  for (i=0; i<=data.length-1;i+=7){
+    time[counter] = data[i];
+    counter++;
+  }
+  return time;
 }
 
-function postUserData() {
-  var name = $("#name").val();
-  var studying = $("#studying").val();
-  currentUser = new User(name, 42.3384, -83.0458, studying);
-  $.ajax({
-    type: "POST",
-    url: "http://"+SERVER+"/data/post/user",
-    //dataType: 'json',
-    data: { 'username' : currentUser.name, 'longitude' : currentUser.lng, 'latitude' : currentUser.lat, 'studying' : currentUser.studying},
-    success: function(result) {
-       console.log(result);
-       findBuddies(currentUser);
+function detection (data){
+
+  for (i=0; i<=data.length-1;i++){
+    var counter = 0;
+    if (Number(data[i]) > 0){
+      counter++;  
     }
-  });
-}
-
-function User(name, lat, lng, studying) {
-  this.name = name;
-  this.lat = lat;
-  this.lng = lng;
-  this.studying = studying;
-
-  return this;
-}
-
-function addBuddy(){
-	// pull up existing map
-  window.open("map.html","_self");
-  //add new buddy!
-}
-
-function findBuddies(currentUser) {
-	// pull up existing map
-  window.open("map.html","_self");
-  currentUser = currentUser;
-}
-
-function changeSubject() {
-  window.open("index.html","_self");
+    
+    if (counter > 1)
+      return true;
+  }
+  return false;
 }
 
 
-
-
-
-
-
+// var time = [];
+// var one = [];
+// var two = [];
+// var three = [];
+// var four = [];
+// var five = [];
+// var six = [];
+// var seven = [];
